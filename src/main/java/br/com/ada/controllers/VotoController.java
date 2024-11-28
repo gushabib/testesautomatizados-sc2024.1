@@ -3,9 +3,10 @@ package br.com.ada.controllers;
 import br.com.ada.entities.Voto;
 import br.com.ada.service.VotoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 public class VotoController {
@@ -22,7 +23,26 @@ public class VotoController {
 
         String resultado = votoService.registrarVoto(voto);
 
-        return ResponseEntity.ok(resultado);
+        return ResponseEntity.created(URI.create("test")).body(resultado);
+
+    }
+
+
+
+
+    @GetMapping("/voto/{id}")
+    public ResponseEntity<Voto> obterVoto(@PathVariable long id){
+
+        Voto voto = votoService.getVotoPorId(id);
+
+        return ResponseEntity.ok(voto);
+    }
+
+
+    @GetMapping("/votos")
+    public ResponseEntity<List<Voto>> obterTodosOsVotos() {
+
+        return ResponseEntity.ok(votoService.obterTodosOsVotos());
 
     }
 }
