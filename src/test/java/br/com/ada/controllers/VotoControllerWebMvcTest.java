@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(VotoController.class)
-class VotoContollerWebMvcTest {
+class VotoControllerWebMvcTest {
 
     @MockBean
     private VotoService votoService;

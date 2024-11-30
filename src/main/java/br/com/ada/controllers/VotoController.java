@@ -26,16 +26,17 @@ public class VotoController {
         return ResponseEntity.created(URI.create("test")).body(resultado);
 
     }
-
-
-
-
     @GetMapping("/voto/{id}")
     public ResponseEntity<Voto> obterVoto(@PathVariable long id){
 
         Voto voto = votoService.getVotoPorId(id);
 
         return ResponseEntity.ok(voto);
+    }
+
+    @PutMapping("/voto/{id}")
+    public ResponseEntity<Voto> atualiza(@PathVariable Long id, @RequestBody Voto voto) {
+        return ResponseEntity.ok(votoService.atualizarVoto(id, voto));
     }
 
 
