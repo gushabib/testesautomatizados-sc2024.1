@@ -164,4 +164,9 @@ public class VotoRepositoryFakeImpl implements VotoRepository {
     public Page<Voto> findAll(Pageable pageable) {
         return null;
     }
+
+    @Override
+    public Optional<Voto> findByNome(String nome) {
+        return Optional.empty();
+    }
 }

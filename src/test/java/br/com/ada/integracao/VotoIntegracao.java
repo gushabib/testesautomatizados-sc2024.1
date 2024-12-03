@@ -76,18 +76,20 @@ class VotoIntegracao {
     @DisplayName("Deve atualizar um usuario registrado no banco ao enviar os dados corretamente")
     void test03() {
 
+        //criou um voto
         Voto voto = new Voto();
         voto.setNome("Voto1");
         voto.setNumeroCandidato(1l);
 
 
+        //registro um voto no banco de dados
         ResponseEntity<String> responseEntity = restTemplate.postForEntity(getUrl(), voto, String.class);
 
+
+        //atualizou o voto no banco de dados
         Voto atualizaVoto = new Voto();
         atualizaVoto.setNumeroCandidato(9999l);
         atualizaVoto.setNome("Test atualizado");
-
-
         restTemplate.put("/voto/1", atualizaVoto);
 
 
